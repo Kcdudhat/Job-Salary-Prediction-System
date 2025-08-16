@@ -135,7 +135,7 @@ def train_models():
 trained_models, perf_df = train_models()
 
 # ----------------- UI -----------------
-st.title("💼 Job Salary Prediction App")
+st.title("Job Salary Prediction App")
 st.write("Predict salaries based on job role, location, and experience level.")
 
 # Sidebar input
@@ -158,7 +158,7 @@ user_df = get_user_input()
 
 # Prediction
 if st.sidebar.button("Predict Salary"):
-    st.sidebar.subheader("🎯 Predicted Salary")
+    st.sidebar.subheader("Predicted Salary")
     preds = {}
     for name, model in trained_models.items():
         pred = np.expm1(model.predict(user_df))[0]
@@ -166,7 +166,7 @@ if st.sidebar.button("Predict Salary"):
         st.sidebar.write(f"**{name}:** ${pred:,.2f}")
 
     # Ensemble Average
-    st.sidebar.success(f"🔥 Ensemble Average: ${np.mean(list(preds.values())):,.2f}")
+    st.sidebar.success(f"Ensemble Average: ${np.mean(list(preds.values())):,.2f}")
 
 # ----------------- Analysis & Graphs -----------------
 st.subheader("📊 Salary Insights")
@@ -192,5 +192,6 @@ fig4 = px.scatter(df_raw, x="remote_ratio", y="salary_in_usd", color="experience
 st.plotly_chart(fig4, use_container_width=True)
 
 # Model Performance
-st.subheader("⚡ Model Performance")
+st.subheader("Model Performance")
 st.dataframe(perf_df, use_container_width=True)
+
